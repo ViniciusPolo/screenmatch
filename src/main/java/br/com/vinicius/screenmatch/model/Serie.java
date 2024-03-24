@@ -1,5 +1,6 @@
 package br.com.vinicius.screenmatch.model;
 
+import br.com.vinicius.screenmatch.service.ConsultaChatGPT;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.Data;
 import lombok.ToString;
@@ -26,6 +27,7 @@ public class Serie {
         this.atores = dadosSerie.atores();
         this.poster = dadosSerie.poster();
         this.sinopse = dadosSerie.sinopse();
+        //this.sinopse = ConsultaChatGPT.obterTraducao(dadosSerie.sinopse());
     }
 }
 

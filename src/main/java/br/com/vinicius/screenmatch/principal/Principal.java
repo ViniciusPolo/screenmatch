@@ -67,7 +67,7 @@ public class Principal {
                         .collect(Collectors.toList());
 
         series.stream()
-                .sorted(Comparator.comparing(Serie::getGenero)).peek(e -> System.out.println("o que houve" + e))
+                .sorted(Comparator.comparing(Serie::getGenero))
                 .forEach(System.out::println);
     }
 
