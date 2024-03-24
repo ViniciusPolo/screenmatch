@@ -2,18 +2,25 @@ package br.com.vinicius.screenmatch.model;
 
 import br.com.vinicius.screenmatch.service.ConsultaChatGPT;
 import com.fasterxml.jackson.annotation.JsonAlias;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
-import java.util.Optional;
 import java.util.OptionalDouble;
 
 @Data
 @ToString
+@Entity
+@Table(name = "series")
 public class Serie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+    @Column(unique = true)
     private String titulo;
     private Integer totalTemporadas;
     private Double avaliacao;
+    @Enumerated(EnumType.STRING)
     private Categoria genero;
     private String atores;
     private String poster;
