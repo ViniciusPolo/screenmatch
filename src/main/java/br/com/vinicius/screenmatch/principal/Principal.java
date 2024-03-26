@@ -41,6 +41,7 @@ public class Principal {
                     5 - Buscar série por ator(riz)
                     6 - Buscar Top 5
                     7 - Buscar por Genero
+                    8 - Buscar por Genero
                                         
                     0 - Sair                                 
                     """;
@@ -68,6 +69,12 @@ public class Principal {
                 case 6:
                     buscarTopSeries();
                     break;
+                case 7:
+                    buscarSeriesPorCategoria();
+                    break;
+                case 8:
+                    buscarSeriesPorNumeroDeTemporadas();
+                    break;
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -76,6 +83,25 @@ public class Principal {
                     break;
             }
         }
+    }
+
+    private void buscarSeriesPorNumeroDeTemporadas() {
+        System.out.println("Digite o numero máximo de temporadas que deseja buscar: ");
+        var numTemporadas = leitura.nextInt();
+        System.out.println("Digite a avalição mínima que deseja buscar");
+        var avaliacao = leitura.nextDouble();
+        List<Serie> seriesPorNumeroTemporadas = repositorio.findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(numTemporadas, avaliacao);
+        System.out.println("Séres com " + numTemporadas + " temporadas e avalidas com o mínimo de " + avaliacao);
+        seriesPorNumeroTemporadas.forEach(s -> System.out.println(s.getTitulo().toUpperCase()));
+    }
+
+    private void buscarSeriesPorCategoria() {
+        System.out.println("Digite a Categoria: ");
+        var nomeGenero = leitura.nextLine();
+        Categoria categoria = Categoria.fromPortugues(nomeGenero);
+        List<Serie> seriesPorCategoria = repositorio.findByGenero(categoria);
+        System.out.println("Séries da Categoria " + nomeGenero);
+        seriesPorCategoria.forEach(s -> System.out.println(s.getTitulo().toUpperCase()));
     }
 
     private void buscarTopSeries() {
