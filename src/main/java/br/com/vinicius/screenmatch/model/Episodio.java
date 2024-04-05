@@ -41,6 +41,13 @@ public class Episodio {
             this.dataLancamento = null;
         }
 
-
+    }
+    @Override
+    public String toString() {
+        return "temporada=" + temporada +
+                ", titulo='" + titulo + '\'' +
+                ", numeroEpisodio=" + numeroEpisodio +
+                ", avaliacao=" + avaliacao +
+                ", dataLancamento=" + dataLancamento ;
     }
 }
